@@ -430,6 +430,22 @@
       .footer-inner { flex-direction: column; text-align: center; }
       .footer-ai { text-align: center; }
     }
+
+    /* ── LANG SWITCH ── */
+    .lang-en { display: none; }
+    html[data-lang="en"] .lang-pt { display: none; }
+    html[data-lang="en"] .lang-en { display: inline; }
+    html[data-lang="en"] .lang-blk { display: block; }
+    .lang-switch { display: flex; gap: .3rem; align-items: center; margin-left: .75rem; }
+    .lang-btn {
+      font-size: .65rem; letter-spacing: .09em; font-weight: 500;
+      font-family: 'DM Mono', monospace; cursor: pointer;
+      background: none; border: 1px solid rgba(255,255,255,.18);
+      color: var(--stone); padding: .22rem .5rem;
+      transition: all .2s; line-height: 1;
+    }
+    .lang-btn.active { background: var(--signal); color: var(--ink); border-color: var(--signal); }
+    .lang-btn:hover:not(.active) { border-color: var(--paper); color: var(--paper); }
   </style>
 </head>
 <body>
@@ -441,7 +457,11 @@
       <span class="nav-logo">Audi<span>Note</span></span>
       <span class="nav-by">by <a href="https://nankov-ai.github.io" target="_blank" rel="noopener noreferrer">Nodeflow</a></span>
     </div>
-    <button class="nav-cta open-modal">Quero testar →</button>
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <button class="nav-cta open-modal"><span class="lang-pt">Quero testar →</span><span class="lang-en">I want to test →</span></button>
   </div>
 </nav>
 
@@ -450,18 +470,18 @@
   <div class="hero-inner">
 
     <div>
-      <div class="hero-eyebrow">App Android · Beta</div>
-      <h1>Grava.<br>Transcreve.<br><em>Pergunta.</em></h1>
-      <p class="hero-sub">Sais de palestras e reuniões com notas incompletas e as perguntas certas por fazer? A AudiNote faz isso por ti — em segundos, com IA.</p>
+      <div class="hero-eyebrow"><span class="lang-pt">App Android · Beta</span><span class="lang-en">Android App · Beta</span></div>
+      <h1><span class="lang-pt lang-blk">Grava.<br>Transcreve.<br><em>Pergunta.</em></span><span class="lang-en lang-blk">Record.<br>Transcribe.<br><em>Ask.</em></span></h1>
+      <p class="hero-sub"><span class="lang-pt">Sais de palestras e reuniões com notas incompletas e as perguntas certas por fazer? A AudiNote faz isso por ti — em segundos, com IA.</span><span class="lang-en">Do you leave talks and meetings with incomplete notes and the right questions unasked? AudiNote does it for you — in seconds, with AI.</span></p>
       <ul class="hero-bullets">
-        <li>Transcrição com identificação automática de oradores</li>
-        <li>Fact-check automático com fontes verificadas</li>
-        <li>Perguntas inteligentes por tipo e por orador</li>
-        <li>Exportação PDF completa · sem subscrição</li>
+        <li><span class="lang-pt">Transcrição com identificação automática de oradores</span><span class="lang-en">Transcription with automatic speaker identification</span></li>
+        <li><span class="lang-pt">Fact-check automático com fontes verificadas</span><span class="lang-en">Automatic fact-check with verified sources</span></li>
+        <li><span class="lang-pt">Perguntas inteligentes por tipo e por orador</span><span class="lang-en">Smart questions by type and speaker</span></li>
+        <li><span class="lang-pt">Exportação PDF completa · sem subscrição</span><span class="lang-en">Full PDF export · no subscription</span></li>
       </ul>
       <div class="hero-btns">
-        <button class="btn-primary open-modal">Quero testar →</button>
-        <div class="hero-badge"><span class="badge-dot"></span>Beta · Primeiros 20 lugares</div>
+        <button class="btn-primary open-modal"><span class="lang-pt">Quero testar →</span><span class="lang-en">I want to test →</span></button>
+        <div class="hero-badge"><span class="badge-dot"></span><span class="lang-pt">Beta · Primeiros 20 lugares</span><span class="lang-en">Beta · First 20 spots</span></div>
       </div>
     </div>
 
@@ -477,7 +497,7 @@
               <span class="s-title">AudiNote</span>
               <span class="s-badge">● REC</span>
             </div>
-            <div class="rec-label">Cancelamento de ruído activo</div>
+            <div class="rec-label"><span class="lang-pt">Cancelamento de ruído activo</span><span class="lang-en">Active noise cancellation</span></div>
             <div class="waveform">
               <span></span><span></span><span></span><span></span><span></span>
               <span></span><span></span><span></span><span></span><span></span>
@@ -487,7 +507,7 @@
             <div class="rec-timer">00:14:32</div>
             <div class="rec-btn"><div class="rec-dot"></div></div>
             <div class="rec-session">
-              <div class="rec-session-label">Sessão activa</div>
+              <div class="rec-session-label"><span class="lang-pt">Sessão activa</span><span class="lang-en">Active session</span></div>
               <div class="rec-session-name">Tech Summit Lisboa 2026</div>
             </div>
           </div>
@@ -495,8 +515,8 @@
           <!-- Screen 2: Transcript -->
           <div class="screen" id="s2">
             <div class="s-head">
-              <span class="s-title">Transcrição</span>
-              <span class="s-badge">2 oradores</span>
+              <span class="s-title"><span class="lang-pt">Transcrição</span><span class="lang-en">Transcript</span></span>
+              <span class="s-badge"><span class="lang-pt">2 oradores</span><span class="lang-en">2 speakers</span></span>
             </div>
             <div class="trans-line">
               <div class="trans-speaker">ORADOR A</div>
@@ -515,11 +535,11 @@
           <!-- Screen 3: Analysis -->
           <div class="screen" id="s3">
             <div class="s-head">
-              <span class="s-title">Análise</span>
-              <span class="s-badge">3 tópicos</span>
+              <span class="s-title"><span class="lang-pt">Análise</span><span class="lang-en">Analysis</span></span>
+              <span class="s-badge"><span class="lang-pt">3 tópicos</span><span class="lang-en">3 topics</span></span>
             </div>
             <div class="topic-section">
-              <div class="sub-label">TÓPICOS</div>
+              <div class="sub-label"><span class="lang-pt">TÓPICOS</span><span class="lang-en">TOPICS</span></div>
               <div class="topic-tags">
                 <span class="topic-tag">IA generativa</span>
                 <span class="topic-tag">Decisão empresarial</span>
@@ -540,8 +560,8 @@
           <!-- Screen 4: Questions -->
           <div class="screen" id="s4">
             <div class="s-head">
-              <span class="s-title">Perguntas</span>
-              <span class="s-badge">6 geradas</span>
+              <span class="s-title"><span class="lang-pt">Perguntas</span><span class="lang-en">Questions</span></span>
+              <span class="s-badge"><span class="lang-pt">6 geradas</span><span class="lang-en">6 generated</span></span>
             </div>
             <div class="q-type">CHALLENGE</div>
             <div class="q-item">Como mede o impacto cultural da adopção de IA nas equipas?</div>
@@ -560,10 +580,10 @@
         <button class="screen-tab" data-s="4"></button>
       </div>
       <div class="screen-tab-labels">
-        <button class="screen-tab-label active" data-s="1">Grava</button>
-        <button class="screen-tab-label" data-s="2">Transcreve</button>
-        <button class="screen-tab-label" data-s="3">Analisa</button>
-        <button class="screen-tab-label" data-s="4">Pergunta</button>
+        <button class="screen-tab-label active" data-s="1"><span class="lang-pt">Grava</span><span class="lang-en">Record</span></button>
+        <button class="screen-tab-label" data-s="2"><span class="lang-pt">Transcreve</span><span class="lang-en">Transcribe</span></button>
+        <button class="screen-tab-label" data-s="3"><span class="lang-pt">Analisa</span><span class="lang-en">Analyse</span></button>
+        <button class="screen-tab-label" data-s="4"><span class="lang-pt">Pergunta</span><span class="lang-en">Ask</span></button>
       </div>
     </div>
 
@@ -573,38 +593,38 @@
 <!-- ── FEATURES ── -->
 <section>
   <div class="section-inner">
-    <p class="section-label">Funcionalidades</p>
-    <h2>Tudo o que precisas. Nada do que não precisas.</h2>
+    <p class="section-label"><span class="lang-pt">Funcionalidades</span><span class="lang-en">Features</span></p>
+    <h2><span class="lang-pt">Tudo o que precisas. Nada do que não precisas.</span><span class="lang-en">Everything you need. Nothing you don't.</span></h2>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">🎙️</div>
-        <div class="feature-name">Gravação profissional</div>
-        <p class="feature-desc">Cancelamento de ruído nativo Android. Grava com o ecrã desligado via foreground service. Até 2 horas por sessão.</p>
+        <div class="feature-name"><span class="lang-pt">Gravação profissional</span><span class="lang-en">Professional recording</span></div>
+        <p class="feature-desc"><span class="lang-pt">Cancelamento de ruído nativo Android. Grava com o ecrã desligado via foreground service. Até 2 horas por sessão.</span><span class="lang-en">Native Android noise cancellation. Records with the screen off via foreground service. Up to 2 hours per session.</span></p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📝</div>
-        <div class="feature-name">Transcrição com diarização</div>
-        <p class="feature-desc">Gemini identifica e separa os oradores automaticamente (Orador A, B, C...). Texto seleccionável e pesquisável.</p>
+        <div class="feature-name"><span class="lang-pt">Transcrição com diarização</span><span class="lang-en">Transcription with diarisation</span></div>
+        <p class="feature-desc"><span class="lang-pt">Gemini identifica e separa os oradores automaticamente (Orador A, B, C...). Texto seleccionável e pesquisável.</span><span class="lang-en">Gemini automatically identifies and separates speakers (Speaker A, B, C...). Selectable and searchable text.</span></p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔍</div>
-        <div class="feature-name">Fact-check automático</div>
-        <p class="feature-desc">Extrai tópicos, pesquisa na web e classifica afirmações como VERIFICADO, NÃO VERIFICADO ou INCORRETO. Com fontes clicáveis.</p>
+        <div class="feature-name"><span class="lang-pt">Fact-check automático</span><span class="lang-en">Automatic fact-check</span></div>
+        <p class="feature-desc"><span class="lang-pt">Extrai tópicos, pesquisa na web e classifica afirmações como VERIFICADO, NÃO VERIFICADO ou INCORRETO. Com fontes clicáveis.</span><span class="lang-en">Extracts topics, searches the web and classifies statements as VERIFIED, UNVERIFIED or INCORRECT. With clickable sources.</span></p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">💡</div>
-        <div class="feature-name">Perguntas inteligentes</div>
-        <p class="feature-desc">Gemini gera perguntas por tipo (CHALLENGE · FUTURE · DEEPEN) e por orador. Até 15 perguntas por sessão com botão "+3".</p>
+        <div class="feature-name"><span class="lang-pt">Perguntas inteligentes</span><span class="lang-en">Smart questions</span></div>
+        <p class="feature-desc"><span class="lang-pt">Gemini gera perguntas por tipo (CHALLENGE · FUTURE · DEEPEN) e por orador. Até 15 perguntas por sessão com botão "+3".</span><span class="lang-en">Gemini generates questions by type (CHALLENGE · FUTURE · DEEPEN) and by speaker. Up to 15 questions per session with the "+3" button.</span></p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📄</div>
-        <div class="feature-name">Exportação PDF</div>
-        <p class="feature-desc">Transcrição completa + análise + perguntas num único PDF partilhável. Gerado no dispositivo, sem servidores externos.</p>
+        <div class="feature-name"><span class="lang-pt">Exportação PDF</span><span class="lang-en">PDF Export</span></div>
+        <p class="feature-desc"><span class="lang-pt">Transcrição completa + análise + perguntas num único PDF partilhável. Gerado no dispositivo, sem servidores externos.</span><span class="lang-en">Full transcript + analysis + questions in a single shareable PDF. Generated on device, no external servers.</span></p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔒</div>
-        <div class="feature-name">Privacidade total</div>
-        <p class="feature-desc">PIN de acesso configurado na primeira abertura. Todas as gravações ficam no teu dispositivo — nunca em servidores nossos.</p>
+        <div class="feature-name"><span class="lang-pt">Privacidade total</span><span class="lang-en">Full privacy</span></div>
+        <p class="feature-desc"><span class="lang-pt">PIN de acesso configurado na primeira abertura. Todas as gravações ficam no teu dispositivo — nunca em servidores nossos.</span><span class="lang-en">Access PIN set up on first launch. All recordings stay on your device — never on our servers.</span></p>
       </div>
     </div>
   </div>
@@ -613,28 +633,28 @@
 <!-- ── HOW IT WORKS ── -->
 <section style="background:#0a0a0a;">
   <div class="section-inner">
-    <p class="section-label">Processo</p>
-    <h2>Como funciona</h2>
+    <p class="section-label"><span class="lang-pt">Processo</span><span class="lang-en">Process</span></p>
+    <h2><span class="lang-pt">Como funciona</span><span class="lang-en">How it works</span></h2>
     <div class="steps">
       <div class="step">
         <div class="step-num">01</div>
-        <div class="step-name">Grava</div>
-        <p class="step-desc">Abre a app, cria uma sessão e prime gravar. O cancelamento de ruído actua automaticamente. Podes bloquear o ecrã — a gravação continua.</p>
+        <div class="step-name"><span class="lang-pt">Grava</span><span class="lang-en">Record</span></div>
+        <p class="step-desc"><span class="lang-pt">Abre a app, cria uma sessão e prime gravar. O cancelamento de ruído actua automaticamente. Podes bloquear o ecrã — a gravação continua.</span><span class="lang-en">Open the app, create a session and press record. Noise cancellation activates automatically. You can lock the screen — recording continues.</span></p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
-        <div class="step-name">Transcreve</div>
-        <p class="step-desc">No fim da gravação, a IA processa o áudio e identifica cada orador. Ficheiros grandes usam a Gemini Files API com polling automático.</p>
+        <div class="step-name"><span class="lang-pt">Transcreve</span><span class="lang-en">Transcribe</span></div>
+        <p class="step-desc"><span class="lang-pt">No fim da gravação, a IA processa o áudio e identifica cada orador. Ficheiros grandes usam a Gemini Files API com polling automático.</span><span class="lang-en">After recording, AI processes the audio and identifies each speaker. Large files use the Gemini Files API with automatic polling.</span></p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
-        <div class="step-name">Analisa</div>
-        <p class="step-desc">Extracção automática de tópicos. Pesquisa web sobre cada afirmação. Classificação com fontes verificadas e links directos.</p>
+        <div class="step-name"><span class="lang-pt">Analisa</span><span class="lang-en">Analyse</span></div>
+        <p class="step-desc"><span class="lang-pt">Extracção automática de tópicos. Pesquisa web sobre cada afirmação. Classificação com fontes verificadas e links directos.</span><span class="lang-en">Automatic topic extraction. Web search on each claim. Classification with verified sources and direct links.</span></p>
       </div>
       <div class="step">
         <div class="step-num">04</div>
-        <div class="step-name">Pergunta</div>
-        <p class="step-desc">Até 15 perguntas organizadas por tipo e orador. Exporta tudo em PDF ou partilha directamente do dispositivo.</p>
+        <div class="step-name"><span class="lang-pt">Pergunta</span><span class="lang-en">Ask</span></div>
+        <p class="step-desc"><span class="lang-pt">Até 15 perguntas organizadas por tipo e orador. Exporta tudo em PDF ou partilha directamente do dispositivo.</span><span class="lang-en">Up to 15 questions organised by type and speaker. Export everything to PDF or share directly from the device.</span></p>
       </div>
     </div>
   </div>
@@ -643,31 +663,31 @@
 <!-- ── REQUIREMENTS ── -->
 <section>
   <div class="section-inner">
-    <p class="section-label">Requisitos</p>
-    <h2>O que precisas para começar</h2>
+    <p class="section-label"><span class="lang-pt">Requisitos</span><span class="lang-en">Requirements</span></p>
+    <h2><span class="lang-pt">O que precisas para começar</span><span class="lang-en">What you need to get started</span></h2>
     <div class="req-grid">
 
       <div class="req-card">
-        <div class="req-title">Dispositivo</div>
-        <div style="font-size:.85rem;color:var(--paper);margin-bottom:.5rem;font-weight:500;">Android 12 ou superior</div>
-        <p style="font-size:.78rem;color:var(--stone);line-height:1.7;">Desenvolvida e testada num Google Pixel 8 Pro (Android 16). Compatível com qualquer dispositivo Android 12+.<br><br>Instalação via APK — sem necessidade de Google Play Store. Basta activar "Instalar de fontes desconhecidas" nas definições do Android.</p>
+        <div class="req-title"><span class="lang-pt">Dispositivo</span><span class="lang-en">Device</span></div>
+        <div style="font-size:.85rem;color:var(--paper);margin-bottom:.5rem;font-weight:500;"><span class="lang-pt">Android 12 ou superior</span><span class="lang-en">Android 12 or higher</span></div>
+        <p style="font-size:.78rem;color:var(--stone);line-height:1.7;"><span class="lang-pt">Desenvolvida e testada num Google Pixel 8 Pro (Android 16). Compatível com qualquer dispositivo Android 12+.<br><br>Instalação via APK — sem necessidade de Google Play Store. Basta activar "Instalar de fontes desconhecidas" nas definições do Android.</span><span class="lang-en">Developed and tested on a Google Pixel 8 Pro (Android 16). Compatible with any Android 12+ device.<br><br>Installation via APK — no Google Play Store required. Just enable "Install from unknown sources" in Android settings.</span></p>
       </div>
 
       <div class="req-card">
-        <div class="req-title">Chaves de API (gratuitas)</div>
+        <div class="req-title"><span class="lang-pt">Chaves de API (gratuitas)</span><span class="lang-en">API Keys (free)</span></div>
         <div class="key-row">
           <div class="key-name">Gemini API Key</div>
-          <p class="key-desc">Para transcrição do áudio, extracção de tópicos, análise e geração de perguntas. O plano gratuito do Google AI Studio é suficiente para uso regular.</p>
+          <p class="key-desc"><span class="lang-pt">Para transcrição do áudio, extracção de tópicos, análise e geração de perguntas. O plano gratuito do Google AI Studio é suficiente para uso regular.</span><span class="lang-en">For audio transcription, topic extraction, analysis and question generation. The Google AI Studio free plan is sufficient for regular use.</span></p>
           <a class="key-link" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">→ aistudio.google.com/apikey</a>
         </div>
         <div class="key-row">
           <div class="key-name">Google Search API Key</div>
-          <p class="key-desc">Para verificação de factos via pesquisa web em tempo real. 100 pesquisas gratuitas por dia no plano base.</p>
+          <p class="key-desc"><span class="lang-pt">Para verificação de factos via pesquisa web em tempo real. 100 pesquisas gratuitas por dia no plano base.</span><span class="lang-en">For real-time web fact-checking. 100 free searches per day on the base plan.</span></p>
           <a class="key-link" href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener noreferrer">→ console.cloud.google.com → Credenciais</a>
         </div>
         <div class="key-row">
           <div class="key-name">Google Search Engine ID</div>
-          <p class="key-desc">Identifica o teu motor de pesquisa personalizado, necessário para a API de pesquisa acima funcionar.</p>
+          <p class="key-desc"><span class="lang-pt">Identifica o teu motor de pesquisa personalizado, necessário para a API de pesquisa acima funcionar.</span><span class="lang-en">Identifies your custom search engine, required for the search API above to work.</span></p>
           <a class="key-link" href="https://programmablesearchengine.google.com/controlpanel/create" target="_blank" rel="noopener noreferrer">→ programmablesearchengine.google.com</a>
         </div>
       </div>
@@ -680,15 +700,15 @@
 <section class="cta-section">
   <div class="cta-inner">
     <div class="hero-badge" style="display:inline-flex;margin-bottom:1.5rem;">
-      <span class="badge-dot"></span>Beta · Acesso limitado
+      <span class="badge-dot"></span><span class="lang-pt">Beta · Acesso limitado</span><span class="lang-en">Beta · Limited access</span>
     </div>
-    <h2>Pronto para nunca mais perder uma ideia?</h2>
-    <p class="cta-sub">Envia o pedido — entraremos em contacto em 48h com o APK e as instruções de instalação.</p>
+    <h2><span class="lang-pt">Pronto para nunca mais perder uma ideia?</span><span class="lang-en">Ready to never miss an idea again?</span></h2>
+    <p class="cta-sub"><span class="lang-pt">Envia o pedido — entraremos em contacto em 48h com o APK e as instruções de instalação.</span><span class="lang-en">Send the request — we'll contact you within 48h with the APK and installation instructions.</span></p>
     <button class="btn-primary open-modal" style="font-size:.9rem;padding:.75rem 2rem;">
-      Quero testar a AudiNote →
+      <span class="lang-pt">Quero testar a AudiNote →</span><span class="lang-en">I want to test AudiNote →</span>
     </button>
     <p class="cta-note">
-      Sem subscrição · Sem dados em servidores · As tuas gravações ficam no teu dispositivo
+      <span class="lang-pt">Sem subscrição · Sem dados em servidores · As tuas gravações ficam no teu dispositivo</span><span class="lang-en">No subscription · No server data · Your recordings stay on your device</span>
     </p>
   </div>
 </section>
@@ -697,7 +717,11 @@
 <footer>
   <div class="footer-inner">
     <p class="footer-copy">© 2026 <a href="https://nankov-ai.github.io" target="_blank" rel="noopener noreferrer">Nodeflow</a> · AudiNote</p>
-    <p class="footer-ai">🤖 AI Act Art. 50 (UE 2024/1689) — App com IA generativa (Gemini). Conteúdo auxiliar, a verificar pelo utilizador.</p>
+    <div class="lang-switch" style="margin-left:0;">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <p class="footer-ai"><span class="lang-pt">🤖 AI Act Art. 50 (UE 2024/1689) — App com IA generativa (Gemini). Conteúdo auxiliar, a verificar pelo utilizador.</span><span class="lang-en">🤖 AI Act Art. 50 (EU 2024/1689) — App with generative AI (Gemini). Auxiliary content, to be verified by the user.</span></p>
   </div>
 </footer>
 
@@ -705,20 +729,20 @@
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
-    <h3 id="modalTitle">AudiNote · Pedido de Acesso Beta</h3>
-    <p class="modal-sub">App Android nativa · Gemini API · Acesso limitado aos primeiros 20 beta testers.<br>Preenche o formulário — entraremos em contacto em 48h com o APK e instruções.</p>
+    <h3 id="modalTitle"><span class="lang-pt">AudiNote · Pedido de Acesso Beta</span><span class="lang-en">AudiNote · Beta Access Request</span></h3>
+    <p class="modal-sub"><span class="lang-pt">App Android nativa · Gemini API · Acesso limitado aos primeiros 20 beta testers.<br>Preenche o formulário — entraremos em contacto em 48h com o APK e instruções.</span><span class="lang-en">Native Android app · Gemini API · Limited to the first 20 beta testers.<br>Fill in the form — we'll contact you within 48h with the APK and instructions.</span></p>
 
     <div class="keys-box">
-      <p><strong>⚙ A app é fornecida sem chaves de API.</strong> Após a instalação, insere as tuas chaves nas Definições da app. São gratuitas nos planos base de cada serviço.</p>
-      <p><strong>Gemini API Key</strong> — transcrição, análise e geração de perguntas.<br>→ <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">aistudio.google.com/apikey</a></p>
-      <p><strong>Google Search API Key</strong> — verificação de factos via pesquisa web.<br>→ <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener noreferrer">console.cloud.google.com</a> → Credenciais</p>
-      <p><strong>Google Search Engine ID</strong> — motor de pesquisa personalizado.<br>→ <a href="https://programmablesearchengine.google.com/controlpanel/create" target="_blank" rel="noopener noreferrer">programmablesearchengine.google.com</a></p>
+      <p><strong><span class="lang-pt">⚙ A app é fornecida sem chaves de API.</span><span class="lang-en">⚙ The app is provided without API keys.</span></strong> <span class="lang-pt">Após a instalação, insere as tuas chaves nas Definições da app. São gratuitas nos planos base de cada serviço.</span><span class="lang-en">After installation, you need to insert your own keys in the app Settings. They are free on the base plan of each service.</span></p>
+      <p><strong>Gemini API Key</strong> — <span class="lang-pt">transcrição, análise e geração de perguntas.</span><span class="lang-en">transcription, analysis and question generation.</span><br>→ <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">aistudio.google.com/apikey</a></p>
+      <p><strong>Google Search API Key</strong> — <span class="lang-pt">verificação de factos via pesquisa web.</span><span class="lang-en">web fact-checking via search.</span><br>→ <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener noreferrer">console.cloud.google.com</a> → Credenciais</p>
+      <p><strong>Google Search Engine ID</strong> — <span class="lang-pt">motor de pesquisa personalizado.</span><span class="lang-en">custom search engine.</span><br>→ <a href="https://programmablesearchengine.google.com/controlpanel/create" target="_blank" rel="noopener noreferrer">programmablesearchengine.google.com</a></p>
     </div>
 
     <form id="betaForm" novalidate>
       <div class="form-row">
         <div class="form-field">
-          <label for="fNome">Nome *</label>
+          <label for="fNome"><span class="lang-pt">Nome *</span><span class="lang-en">Name *</span></label>
           <input type="text" id="fNome" placeholder="O teu nome" autocomplete="name" required />
         </div>
         <div class="form-field">
@@ -728,11 +752,11 @@
       </div>
       <div class="form-row">
         <div class="form-field">
-          <label for="fIdade">Idade *</label>
+          <label for="fIdade"><span class="lang-pt">Idade *</span><span class="lang-en">Age *</span></label>
           <input type="number" id="fIdade" min="10" max="99" placeholder="Ex: 34" required />
         </div>
         <div class="form-field">
-          <label for="fAndroid">Versão Android *</label>
+          <label for="fAndroid"><span class="lang-pt">Versão Android *</span><span class="lang-en">Android version *</span></label>
           <select id="fAndroid" required>
             <option value="">Seleccionar</option>
             <option value="Android 12">Android 12</option>
@@ -744,33 +768,31 @@
         </div>
       </div>
       <div class="form-field">
-        <label for="fUso">Como usarias a AudiNote? *</label>
+        <label for="fUso"><span class="lang-pt">Como usarias a AudiNote? *</span><span class="lang-en">How would you use AudiNote? *</span></label>
         <textarea id="fUso" placeholder="Ex: palestras de gestão, reuniões de equipa, aulas universitárias..." required></textarea>
       </div>
       <div id="ageWarn" class="age-warn">
-        ⚠ Tens menos de 16 anos. De acordo com o RGPD (Art. 8), é necessário o consentimento de um encarregado de educação. Inclui o contacto de um responsável no campo acima.
+        <span class="lang-pt">⚠ Tens menos de 16 anos. De acordo com o RGPD (Art. 8), é necessário o consentimento de um encarregado de educação. Inclui o contacto de um responsável no campo acima.</span><span class="lang-en">⚠ You are under 16. Under GDPR (Art. 8), parental consent is required. Include a parent/guardian's contact in the field above.</span>
       </div>
       <div class="form-consent">
         <input type="checkbox" id="fConsent" required />
         <label for="fConsent">
-          Aceito que os dados acima sejam partilhados com a Nodeflow exclusivamente para fins de acesso beta à AudiNote. Não serão cedidos a terceiros. Posso solicitar a remoção a qualquer momento via <a href="mailto:nodeflow.pt@gmail.com">nodeflow.pt@gmail.com</a>.
+          <span class="lang-pt">Aceito que os dados acima sejam partilhados com a Nodeflow exclusivamente para fins de acesso beta à AudiNote. Não serão cedidos a terceiros. Posso solicitar a remoção a qualquer momento via <a href="mailto:nodeflow.pt@gmail.com">nodeflow.pt@gmail.com</a>.</span><span class="lang-en">I agree that the above data may be shared with Nodeflow solely for AudiNote beta access purposes. It will not be passed to third parties. I can request removal at any time via <a href="mailto:nodeflow.pt@gmail.com">nodeflow.pt@gmail.com</a>.</span>
         </label>
       </div>
       <div id="formError" class="form-error"></div>
-      <button type="submit" class="form-submit">Enviar pedido de acesso →</button>
+      <button type="submit" class="form-submit"><span class="lang-pt">Enviar pedido de acesso →</span><span class="lang-en">Send access request →</span></button>
     </form>
 
     <div id="formSuccess" class="form-success">
-      <p>Pedido enviado com sucesso.</p>
+      <p><span class="lang-pt">Pedido enviado com sucesso.</span><span class="lang-en">Request sent successfully.</span></p>
       <small>
-        O teu cliente de email abriu com o pedido pré-preenchido.<br>
-        Confirma o envio e aguarda o nosso contacto em até 48h.<br>
-        Vais receber o APK e as instruções de instalação.
+        <span class="lang-pt">O teu cliente de email abriu com o pedido pré-preenchido.<br>Confirma o envio e aguarda o nosso contacto em até 48h.<br>Vais receber o APK e as instruções de instalação.</span><span class="lang-en">Your email client opened with the request pre-filled.<br>Confirm the send and wait for our contact within 48h.<br>You will receive the APK and installation instructions.</span>
       </small>
     </div>
 
     <div class="form-ai-note">
-      🤖 <strong style="color:var(--paper);">AI Act Art. 50 (UE 2024/1689):</strong> A AudiNote utiliza IA generativa (Google Gemini) para transcrição, análise e geração de perguntas. O conteúdo produzido é de natureza auxiliar e deve ser verificado pelo utilizador. Esta app não toma decisões automatizadas com efeitos jurídicos ou equivalentes.
+      <span class="lang-pt">🤖 <strong style="color:var(--paper);">AI Act Art. 50 (UE 2024/1689):</strong> A AudiNote utiliza IA generativa (Google Gemini) para transcrição, análise e geração de perguntas. O conteúdo produzido é de natureza auxiliar e deve ser verificado pelo utilizador. Esta app não toma decisões automatizadas com efeitos jurídicos ou equivalentes.</span><span class="lang-en">🤖 <strong style="color:var(--paper);">AI Act Art. 50 (EU 2024/1689):</strong> AudiNote uses generative AI (Google Gemini) for transcription, analysis and question generation. The content produced is auxiliary in nature and must be verified by the user. This app does not make automated decisions with legal or equivalent effects.</span>
     </div>
   </div>
 </div>
@@ -832,8 +854,12 @@
     const uso     = document.getElementById('fUso').value.trim();
     const consent = document.getElementById('fConsent').checked;
 
+    const lang = localStorage.getItem('nf-lang') || 'pt';
+
     if (!nome || !email || !idade || !android || !uso || !consent) {
-      formError.textContent = 'Por favor preenche todos os campos e aceita os termos.';
+      formError.textContent = lang === 'en'
+        ? 'Please fill in all fields and accept the terms.'
+        : 'Por favor preenche todos os campos e aceita os termos.';
       formError.classList.add('visible');
       return;
     }
@@ -841,17 +867,26 @@
 
     const ageNum  = parseInt(idade);
     const ageNote = ageNum < 16
-      ? `\n⚠ ATENÇÃO: utilizador indicou ${idade} anos — verificar consentimento parental antes de enviar APK.\n`
+      ? (lang === 'en'
+        ? `\n⚠ ATTENTION: user indicated ${idade} years — verify parental consent before sending APK.\n`
+        : `\n⚠ ATENÇÃO: utilizador indicou ${idade} anos — verificar consentimento parental antes de enviar APK.\n`)
       : '';
 
     const to      = 'nodeflow.pt@gmail.com';
     const subject = encodeURIComponent('Pedido de Acesso Beta — AudiNote');
-    const body    = encodeURIComponent(
-      `Novo pedido de acesso beta à AudiNote.\n\n` +
-      `Nome: ${nome}\nEmail: ${email}\nIdade: ${idade} anos\nAndroid: ${android}\n` +
-      `Como usaria:\n${uso}\n${ageNote}\n` +
-      `Consentimento RGPD: Sim\nData: ${new Date().toLocaleDateString('pt-PT')}`
-    );
+    const body    = lang === 'en'
+      ? encodeURIComponent(
+          `New AudiNote beta access request.\n\n` +
+          `Name: ${nome}\nEmail: ${email}\nAge: ${idade}\nAndroid: ${android}\n` +
+          `How they would use it:\n${uso}\n${ageNote}\n` +
+          `GDPR consent: Yes\nDate: ${new Date().toLocaleDateString('en-GB')}`
+        )
+      : encodeURIComponent(
+          `Novo pedido de acesso beta à AudiNote.\n\n` +
+          `Nome: ${nome}\nEmail: ${email}\nIdade: ${idade} anos\nAndroid: ${android}\n` +
+          `Como usaria:\n${uso}\n${ageNote}\n` +
+          `Consentimento RGPD: Sim\nData: ${new Date().toLocaleDateString('pt-PT')}`
+        );
 
     window.open(
       `https://mail.google.com/mail/?view=cm&to=${to}&su=${subject}&body=${body}`,
@@ -861,6 +896,23 @@
     form.style.display = 'none';
     formSuccess.classList.add('visible');
   });
+
+  // ── Language switch ──
+  (function() {
+    const lang = localStorage.getItem('nf-lang') || 'pt';
+    document.documentElement.setAttribute('data-lang', lang);
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const l = btn.dataset.lang;
+        document.documentElement.setAttribute('data-lang', l);
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
+        localStorage.setItem('nf-lang', l);
+      });
+    });
+  })();
 </script>
 </body>
 </html>
