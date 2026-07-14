@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ouvinte</string>
+
+    <!-- Home -->
+    <string name="home_title">Sessões</string>
+    <string name="home_empty">Nenhuma sessão gravada ainda.\nToca no microfone para começar.</string>
+    <string name="home_new_session">Nova Sessão</string>
+
+    <!-- Recording -->
+    <string name="recording_title">A Gravar</string>
+    <string name="recording_listening">A ouvir o palestrante…</string>
+    <string name="recording_start">Gravar</string>
+    <string name="recording_stop">Parar</string>
+    <string name="recording_processing">A processar áudio…</string>
+    <string name="recording_permission_needed">Permissão de microfone necessária</string>
+    <string name="recording_speakers_detected">%d orador(es) detectado(s)</string>
+
+    <!-- Session -->
+    <string name="session_transcript">Transcrição</string>
+    <string name="session_analyse">Análise</string>
+    <string name="session_speaker_label">Orador %s</string>
+    <string name="session_duration">Duração: %s</string>
+
+    <!-- Analysis -->
+    <string name="analysis_title">Análise</string>
+    <string name="analysis_summary">Resumo</string>
+    <string name="analysis_factcheck">Verificação de Factos</string>
+    <string name="analysis_sources">Fontes</string>
+    <string name="analysis_loading">A pesquisar e analisar…</string>
+    <string name="analysis_questions_ready">Perguntas</string>
+    <string name="analysis_verified">Verificado</string>
+    <string name="analysis_unverified">Não Verificado</string>
+    <string name="analysis_incorrect">Incorreto</string>
+
+    <!-- Questions -->
+    <string name="questions_title">Perguntas</string>
+    <string name="questions_for_speaker">Para o %s</string>
+    <string name="questions_more">+ 3 Perguntas</string>
+    <string name="questions_loading">A gerar perguntas…</string>
+    <string name="questions_export_pdf">Exportar PDF</string>
+    <string name="questions_type_challenge">Desafio</string>
+    <string name="questions_type_future">Futuro</string>
+    <string name="questions_type_deepen">Aprofundamento</string>
+
+    <!-- Errors -->
+    <string name="error_generic">Ocorreu um erro. Tenta novamente.</string>
+    <string name="error_no_internet">Sem ligação à internet.</string>
+    <string name="error_api_key">Chave de API não configurada.</string>
+</resources>

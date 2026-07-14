@@ -1,0 +1,14 @@
+# Copia este ficheiro para local.properties e preenche as chaves de API
+# NUNCA faças commit do ficheiro local.properties
+
+# SDK Android - ajusta para o teu caminho
+sdk.dir=C\:\\Users\\SEU_UTILIZADOR\\AppData\\Local\\Android\\Sdk
+
+# Gemini API Key - obtém em https://aistudio.google.com/app/apikey
+GEMINI_API_KEY=AIza...
+
+# Google Custom Search API Key - obtém em https://console.cloud.google.com/apis/credentials
+GOOGLE_SEARCH_API_KEY=AIza...
+
+# Google Programmable Search Engine ID - cria em https://programmablesearchengine.google.com
+GOOGLE_SEARCH_ENGINE_ID=...

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Microfone -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,28 C49,28 45,32 45,37 L45,54 C45,59 49,63 54,63 C59,63 63,59 63,54 L63,37 C63,32 59,28 54,28 Z" />
+
+    <!-- Suporte do microfone -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,54 C38,62.8 45.2,70 54,70 C62.8,70 70,62.8 70,54 L66,54 C66,60.6 60.6,66 54,66 C47.4,66 42,60.6 42,54 Z" />
+
+    <!-- Linha vertical -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M52,70 L52,78 L56,78 L56,70 Z" />
+
+    <!-- Base -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M44,78 L64,78 L64,82 L44,82 Z" />
+</vector>
