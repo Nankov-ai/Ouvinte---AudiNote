@@ -124,6 +124,16 @@
       border: 1px solid rgba(255,255,255,.1); padding: .3rem .75rem; border-radius: 20px;
     }
     .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #f5a623; display: inline-block; }
+    .eu-ai-pill {
+      display: inline-flex; align-items: center; gap: .35rem;
+      background: var(--paper); color: var(--ink);
+      font-family: 'DM Mono', monospace; font-size: .58rem; font-weight: 700;
+      letter-spacing: .09em; padding: .25rem .6rem;
+      border-radius: 20px; text-decoration: none; white-space: nowrap;
+      transition: opacity .2s; width: fit-content;
+    }
+    .eu-ai-pill:hover { opacity: .75; }
+    .eu-ai-pill-ai { font-size: .72rem; }
 
     /* ── PHONE MOCKUP ── */
     .phone-wrap {
@@ -468,6 +478,9 @@
   <div class="hero-inner">
 
     <div>
+      <a class="eu-ai-pill" href="https://digital-strategy.ec.europa.eu/pt/policies/eu-icons-labelling-ai-generated-content" target="_blank" rel="noopener noreferrer" title="EU AI Act Art. 50 — Conteúdo gerado por IA" style="margin-bottom:.75rem;">
+        <span class="eu-ai-pill-ai">AI</span> GENERATED
+      </a>
       <div class="hero-eyebrow"><span class="lang-pt">App Android · Beta</span><span class="lang-en">Android App · Beta</span></div>
       <h1><span class="lang-pt lang-blk">Grava.<br>Transcreve.<br><em>Pergunta.</em></span><span class="lang-en lang-blk">Record.<br>Transcribe.<br><em>Ask.</em></span></h1>
       <p class="hero-sub"><span class="lang-pt">Sais de palestras e reuniões com notas incompletas e as perguntas certas por fazer? A AudiNote faz isso por ti — em segundos, com IA.</span><span class="lang-en">Do you leave talks and meetings with incomplete notes and the right questions unasked? AudiNote does it for you — in seconds, with AI.</span></p>
