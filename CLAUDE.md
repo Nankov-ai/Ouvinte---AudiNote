@@ -140,6 +140,11 @@ Em `local.properties` (não commitar). **BuildConfig tem sempre prioridade sobre
 - Room: 2.7.0
 - Compose BOM: 2025.05.00
 
+## Concorrentes identificados
+
+- **Genspark SecondBrain** — memória persistente corporativa (email, reuniões, CRM) + hardware gravador $179. Nicho diferente: memória contínua passiva vs. aprendizagem ativa intencional do AudiNote. Não é concorrente direto.
+- **NotebookLM (Google)** — concorrente mais relevante: upload de áudio → análise, mas sem workflow de gravação nativa nem perguntas ao vivo para o palestrante.
+
 ## Futuras versões
 
 - **v2**: Modos de Sessão (Palestra / Reunião / Masterclass / Negociação / Entrevista) — ajusta prompts Gemini por contexto
