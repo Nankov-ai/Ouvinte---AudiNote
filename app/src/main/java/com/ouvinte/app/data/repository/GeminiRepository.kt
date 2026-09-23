@@ -33,8 +33,8 @@ class GeminiRepository @Inject constructor(
     private val authInterceptor: GeminiAuthInterceptor
 ) {
     companion object {
-        private const val MODEL_TRANSCRIPTION = "gemini-3.5-flash"
-        private const val MODEL_ANALYSIS = "gemini-3.5-flash"
+        private const val MODEL_TRANSCRIPTION = "gemini-3.8-flash"
+        private const val MODEL_ANALYSIS = "gemini-3.8-flash"
         private const val MAX_INLINE_BYTES = 19 * 1024 * 1024L
         private const val AUDIO_MIME = "audio/mp4"
     }

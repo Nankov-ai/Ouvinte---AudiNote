@@ -74,7 +74,7 @@ class SettingsViewModel @Inject constructor(
             runCatching {
                 withContext(Dispatchers.IO) {
                     // Usa o SDK — único método que suporta todos os formatos de chave (AIza, AQ., etc.)
-                    val model = GenerativeModel(modelName = "gemini-3.5-flash", apiKey = key)
+                    val model = GenerativeModel(modelName = "gemini-3.8-flash", apiKey = key)
                     val response = model.generateContent(content { text("Responde apenas com OK.") })
                     response.text ?: error("Sem resposta")
                 }

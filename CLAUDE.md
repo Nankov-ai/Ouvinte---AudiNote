@@ -20,11 +20,11 @@ App Android nativa em Kotlin para gravar palestras, webinars e masterclasses, tr
 
 | Função | Modelo | Razão |
 |--------|--------|-------|
-| Transcrição de áudio (inline ≤19MB) | `gemini-3.5-flash` via SDK | SDK gere autenticação e timeout |
-| Transcrição de áudio (Files API >19MB) | `gemini-3.5-flash` via REST | OkHttp timeout 15min; SDK tem timeout fixo 80s incompatível |
-| Análise + fact-check + perguntas | `gemini-3.5-flash` via SDK | Único modelo confirmado funcionar nesta chave API |
+| Transcrição de áudio (inline ≤19MB) | `gemini-3.8-flash` via SDK | SDK gere autenticação e timeout |
+| Transcrição de áudio (Files API >19MB) | `gemini-3.8-flash` via REST | OkHttp timeout 15min; SDK tem timeout fixo 80s incompatível |
+| Análise + fact-check + perguntas | `gemini-3.8-flash` via SDK | Flash mais capaz; metade do preço do 3.5 Flash até 31/12/2026 |
 
-**Nota importante**: modelos como `gemini-1.5-flash`, `gemini-2.0-flash`, `gemini-3.1-flash-lite`, `gemini-3-flash-preview` devolvem 404 nesta chave. Usar sempre `gemini-3.5-flash`.
+**Nota importante**: usar sempre `gemini-3.8-flash` (ID fixo — não usar o alias `gemini-flash-latest`, que muda de modelo e preço sem aviso). Antes de trocar de modelo, testar a chave com um `generateContent` curto: no passado `gemini-1.5-flash`, `gemini-2.0-flash`, `gemini-3.1-flash-lite`, `gemini-3-flash-preview` devolveram 404 nesta chave.
 
 ## Funcionalidades
 
@@ -100,7 +100,7 @@ Em `local.properties` (não commitar). **BuildConfig tem sempre prioridade sobre
 
 | Campo | Serviço |
 |-------|---------|
-| `GEMINI_API_KEY` | Google AI Studio — chave no formato `AIzaSy...` (REST e SDK). Chaves `AQ.` só funcionam no SDK, não no REST. |
+| `GEMINI_API_KEY` | Google AI Studio — chave no formato `AIzaSy...` ou `AQ.` — ambas funcionam no SDK e no REST (chave `AQ.` confirmada no REST com header `x-goog-api-key` em 2026-09-23). |
 | `GOOGLE_SEARCH_API_KEY` | Google Cloud Console → Credenciais (formato `AIzaSy...`) |
 | `GOOGLE_SEARCH_ENGINE_ID` | programmablesearchengine.google.com — copiar só o valor após `cx=` |
 | `KEYSTORE_FILE` | Caminho para `audinate-release.keystore` (relativo a `app/`) |
@@ -113,7 +113,8 @@ Em `local.properties` (não commitar). **BuildConfig tem sempre prioridade sobre
 - **`VOICE_RECOGNITION` audio source** — cancelamento de ruído nativo do Android, melhor precisão de transcrição vs `MIC`. Consequência: não capta áudio da coluna do próprio smartphone (esse som é tratado como ruído de fundo e eliminado). Para gravar webinars no smartphone, o cenário recomendado é ver o webinar no computador e usar o Pixel ao lado.
 - **Captura de áudio interno (não implementada)** — `MediaProjection` + `AudioPlaybackCaptureConfiguration` (Android 10+) permitiria captar áudio do sistema, mas apps de webinar (Zoom, Teams, YouTube) bloqueiam-na via `allowAudioPlaybackCapture=false`. Decidido não implementar.
 - **Gemini Files API para áudio >19MB** — upload → poll a cada 5s (máx. 5 min) → `generateContent` via REST (não SDK). O SDK Gemini tem timeout fixo de 80s internamente (Ktor) que não é configurável via `RequestOptions`; o OkHttp do Retrofit tem 15min. `getFile()` devolve `GeminiFileInfo` directamente (sem wrapper `"file"`).
-- **Modelos disponíveis nesta chave** — apenas `gemini-3.5-flash` confirmado. `gemini-1.5-flash`, `gemini-2.0-flash`, `gemini-3.1-flash-lite`, `gemini-3-flash-preview` devolvem 404.
+- **Modelos disponíveis nesta chave** — `gemini-3.8-flash` (em uso desde 2026-09-23) e `gemini-3.5-flash` confirmados. `gemini-1.5-flash`, `gemini-2.0-flash`, `gemini-3.1-flash-lite`, `gemini-3-flash-preview` devolveram 404.
+- **Escolha do modelo (2026-09-23)** — `gemini-3.8-flash` ($0.75/$3.75 por 1M tokens até 31/12/2026, depois $1.50/$7.50) vs `gemini-3.5-flash` ($1.50/$9.00). Rejeitados: `gemini-3.5-flash-lite` (mais barato mas pior diarização em áudio longo), `gemini-3.5-transcribe` ($2/$12, só transcreve — não faz análise nem perguntas), `gemini-3.1-pro-preview` (caro e preview).
 - **WakeLock + WifiLock durante transcrição** — `PARTIAL_WAKE_LOCK` (90 min) + `WIFI_MODE_FULL_HIGH_PERF` adquiridos em `GeminiRepository.transcribeAudio()`, libertados no `finally`. O WakeLock evita suspensão de CPU; o WifiLock evita que o Android suspenda o WiFi quando o ecrã desliga — sem ele, o `generateContent` falha com `UnknownHostException`. Permissão `ACCESS_WIFI_STATE` necessária no manifesto.
 - **Cache de URI Gemini** — `geminiFileUri` e `geminiFileName` guardados na sessão após upload. Retries verificam se o ficheiro ainda está `ACTIVE` antes de re-fazer upload, evitando erros 429 (rate limit).
 - **Erro 429 Files API** — rate limit por minuto. Esperar 5-10 min. Ficheiros permanecem disponíveis 48h após upload.
